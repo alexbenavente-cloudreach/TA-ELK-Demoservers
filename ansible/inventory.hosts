@@ -1,0 +1,11 @@
+[bastionhost]
+54.89.167.142
+
+
+[demo_server]
+192.168.2.131
+
+[demo_server:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/elk_keypair.pem
+ansible_ssh_common_args="-o ProxyCommand=\"ssh -q ubuntu@54.89.167.142 -o IdentityFile=~/.ssh/elk_keypair.pem -W %h:%p\""
