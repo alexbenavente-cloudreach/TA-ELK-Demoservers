@@ -38,6 +38,21 @@
         name: metricbeat
         update_cache: yes
 
+    - name: Copying config file for Metricbeat
+      copy:
+        src: "templates/metricbeat.yml.j2"
+        dest: "/etc/metricbeat/metricbeat.yml"
+
+    - name: Enabling Metricbeat
+      systemd:
+        name: metricbeat
+        enabled: yes
+
+    - name: Starting Metricbeat
+      systemd:
+        name: metricbeat
+        state: started
+
     - name: Start metricbeats service 
       service:
         name: metricbeat
@@ -48,6 +63,21 @@
         name: filebeat
         update_cache: yes
 
+    - name: Copying config file for Filebeat
+      copy:
+        src: "templates/filebeat.yml.j2"
+        dest: "/etc/filebeat/filebeat.yml"
+
+    - name: Enabling Filebeat
+      systemd:
+        name: filebeat
+        enabled: yes
+
+    - name: Starting Filebeat
+      systemd:
+        name: filebeat
+        state: started
+        
     - name: Start Filebeat service 
       service:
         name: filebeat
