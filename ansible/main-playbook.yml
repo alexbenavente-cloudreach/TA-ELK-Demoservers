@@ -43,6 +43,16 @@
         name: metricbeat
         state: started
 
+    - name: Install Filebeat onto the demo servers
+      apt:
+        name: filebeat
+        update_cache: yes
+
+    - name: Start Filebeat service 
+      service:
+        name: filebeat
+        state: started
+
 
 
 
